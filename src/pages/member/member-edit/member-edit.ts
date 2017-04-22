@@ -38,7 +38,7 @@ export class MemberEdit {
 save(){
   // console.log("weather: "+this.object.weather)
   // console.log("win: "+this.object.win)
-  if(!this.object.checkDate || !this.object.city){
+  if(!this.object.checkDate || !this.object.city || !this.object.weather || !this.object.win){
     console.log("您的信息不完整，请重新填写")
   }
 
@@ -50,17 +50,18 @@ save(){
       this.viewCtrl.dismiss()
     }).catch(err=>{
     console.log(err)
-  })
+    })
   }else{
-  // console.log("city: "+this.object.city)
-  // console.log("win: "+this.object.win)
-  this.userServ.saveClass("RainBet",this.object).then(data=>{
-    this.object.objectId = data.json().objectId
-    this.object.createdAt = data.json().createAt
-    this.viewCtrl.dismiss(this.object)
-  }).catch(err=>{
-    console.log(err)
-  })
+    
+    // console.log("city: "+this.object.city)
+    // console.log("win: "+this.object.win)
+    this.userServ.saveClass("RainBet",this.object).then(data=>{
+      this.object.objectId = data.json().objectId
+      this.object.createdAt = data.json().createAt
+      this.viewCtrl.dismiss(this.object)
+    }).catch(err=>{
+      console.log(err)
+    })
  }
 
 }
