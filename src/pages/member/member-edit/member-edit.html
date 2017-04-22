@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{currentMember?"编辑学员":"新增学员"}}</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="returnToHistory()" style="font-size: 2.5rem!important;">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<ion-item>
+  <ion-label begin>日期</ion-label>
+  <!--<ion-input [(ngModel)]="object.date"></ion-input>-->
+  <ion-input type="Date" [(ngModel)]="object.checkDate"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label begin>城市</ion-label>
+  <ion-input [(ngModel)]="object.city"></ion-input>
+</ion-item>
+
+<edit-check [title]="'天气'" [(option)]="object.weather" [options]="['晴','小雨','中雨','大雨']"></edit-check>
+
+<edit-radio [title]="'输赢'" [(option)]="object.win" [options]="['胜','输']"></edit-radio>
+
+<!--<ion-item>
+  <ion-label floating>习题1分数</ion-label>
+  <ion-input [(ngModel)]="object.exam1"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label floating>习题2分数</ion-label>
+  <ion-input [(ngModel)]="object.exam2"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label floating>习题3分数</ion-label>
+  <ion-input [(ngModel)]="object.exam3"></ion-input>
+</ion-item>-->
+
+<button block outline ion-button color="secondary" (click)="save()">保存</button>
+<button block outline ion-button color="primary" (click)="returnToHistory()">返回</button>
+</ion-content>

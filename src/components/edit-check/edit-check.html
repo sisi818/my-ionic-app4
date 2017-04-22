@@ -1,0 +1,9 @@
+<ion-item (click)="selectOption()">
+  <ion-label>{{title}}</ion-label>
+  <span item-right>{{option}}</span>
+  <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+  <ion-chip *ngFor="let key of checkIds">
+    <ion-label>{{_options[key]}}</ion-label>
+    <ion-checkbox [(ngModel)]="option"></ion-checkbox>
+  </ion-chip>
+</ion-item>

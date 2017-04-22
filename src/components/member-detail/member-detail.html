@@ -1,0 +1,35 @@
+<ion-card>
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="{{member.weather?'assets/img/'+member.weather+'.png':'assets/img/avatar.jpg'}}">
+    </ion-avatar>
+    <ion-label>{{member.checkDate|date:'yyyy-MM-dd'}}</ion-label>
+    <ion-label [ngSwitch]="member.weather">
+      <div *ngSwitchCase="'sun'">晴</div>
+      <div *ngSwitchCase="'little-rain'">小雨</div>
+      <div *ngSwitchCase="'mid-rain'">中雨</div>
+      <div *ngSwitchCase="'heavy-rain'">大雨</div>
+      <div *ngSwitchDefault>无</div>
+    </ion-label>
+  </ion-item>
+  <ion-row>
+    <ion-col col-6>
+      <button color="sisi-like" ion-button icon-left clear (click)="gotoCity(member.city)">
+          <ion-icon name="star"></ion-icon>
+          <div>{{member.city}}</div>
+      </button>
+    </ion-col>
+    <ion-col col-3>
+      <button ion-button icon-left clear (click)="chooseMember()">
+        <ion-icon name="create"></ion-icon>
+        <div>编辑</div>
+      </button>
+    </ion-col>
+    <ion-col col-3>
+      <button color="danger" ion-button icon-left clear (click)="delete()">
+        <ion-icon name="close"></ion-icon>
+        <div>删除</div>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-card>
